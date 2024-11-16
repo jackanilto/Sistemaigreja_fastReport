@@ -1,0 +1,34 @@
+unit RelMovimentacoes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.Imaging.jpeg,
+  Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.ComCtrls;
+
+type
+  TFrmRelMov = class(TForm)
+    Label1: TLabel;
+    dataInicial: TDateTimePicker;
+    Label2: TLabel;
+    dataFinal: TDateTimePicker;
+    lblIgreja: TLabel;
+    cbIgreja: TComboBox;
+    Image1: TImage;
+    btnRel: TSpeedButton;
+  private
+    { Private declarations }
+     procedure carregarCombobox();
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmRelMov: TFrmRelMov;
+
+implementation
+
+{$R *.dfm}
+
+end.

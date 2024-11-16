@@ -1,0 +1,48 @@
+unit Pessoas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Mask, Vcl.StdCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmMembros = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    Label7: TLabel;
+    edtBuscar: TEdit;
+    edtNome: TEdit;
+    cbFuncao: TComboBox;
+    cbMatriz: TComboBox;
+    grid: TDBGrid;
+    cbFilial: TComboBox;
+    edtCodigo: TEdit;
+    img: TImage;
+    btnAdd: TButton;
+    Label3: TLabel;
+    EdtEndereco: TEdit;
+    Label4: TLabel;
+    edtTel: TMaskEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMembros: TFrmMembros;
+
+implementation
+
+{$R *.dfm}
+
+end.

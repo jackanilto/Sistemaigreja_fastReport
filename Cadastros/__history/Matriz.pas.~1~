@@ -1,0 +1,45 @@
+unit Matriz;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Mask, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmMatriz = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    edtBuscar: TEdit;
+    Label2: TLabel;
+    edtNome: TEdit;
+    edtEndereco: TEdit;
+    Label3: TLabel;
+    edtNumero: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    grid: TDBGrid;
+    btnBuscar: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    edtBairro: TEdit;
+    edtCidade: TEdit;
+    Label7: TLabel;
+    edtTel: TMaskEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMatriz: TFrmMatriz;
+
+implementation
+
+{$R *.dfm}
+
+end.

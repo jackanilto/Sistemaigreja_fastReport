@@ -1,0 +1,109 @@
+unit Usuarios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Buttons, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmUsuarios = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    edtBuscar: TEdit;
+    Label2: TLabel;
+    edtNome: TEdit;
+    edtUsuario: TEdit;
+    Label3: TLabel;
+    edtSenha: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    cbFuncao: TComboBox;
+    Label6: TLabel;
+    cbMatriz: TComboBox;
+    grid: TDBGrid;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    cbFilial: TComboBox;
+    Label7: TLabel;
+  private
+    { Private declarations }
+     procedure limparCampos();
+    procedure habilitarCampos();
+    procedure desabilitarCampos();
+    procedure buscarTudo();
+    procedure buscarNome();
+    procedure associarCampos();
+    procedure carregarComboboxFilial();
+    procedure carregarComboboxMatriz();
+    procedure carregarComboboxFuncoes();
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmUsuarios: TFrmUsuarios;
+
+implementation
+
+{$R *.dfm}
+
+uses Modulo;
+
+{ TFrmUsuarios }
+
+procedure TFrmUsuarios.associarCampos;
+begin
+dm.tb_usuarios.FieldByName('nome').Value := edtNome.Text;
+dm.tb_usuarios.FieldByName('usuario').Value := edtUsuario.Text;
+dm.tb_usuarios.FieldByName('senha').Value := edtSenha.Text;
+dm.tb_usuarios.FieldByName('funcao').Value := cdbFuncao.Text;
+dm.tb_usuarios.FieldByName('matriz').Value := cbMatriz.Text;
+dm.tb_usuarios.FieldByName('filial').Value := cbFilial.Text;
+
+end;
+
+procedure TFrmUsuarios.buscarNome;
+begin
+
+end;
+
+procedure TFrmUsuarios.buscarTudo;
+begin
+
+end;
+
+procedure TFrmUsuarios.carregarComboboxFilial;
+begin
+
+end;
+
+procedure TFrmUsuarios.carregarComboboxFuncoes;
+begin
+
+end;
+
+procedure TFrmUsuarios.carregarComboboxMatriz;
+begin
+
+end;
+
+procedure TFrmUsuarios.desabilitarCampos;
+begin
+
+end;
+
+procedure TFrmUsuarios.habilitarCampos;
+begin
+
+end;
+
+procedure TFrmUsuarios.limparCampos;
+begin
+
+end;
+
+end.

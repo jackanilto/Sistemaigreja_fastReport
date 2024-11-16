@@ -1,0 +1,213 @@
+unit Principal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
+  Vcl.Menus, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  TFrmPrincipal = class(TForm)
+    Image1: TImage;
+    MainMenu1: TMainMenu;
+    Cadastros1: TMenuItem;
+    Movimentaes1: TMenuItem;
+    Relatrios1: TMenuItem;
+    Sair1: TMenuItem;
+    Usurios1: TMenuItem;
+    FunoEclesistica1: TMenuItem;
+    Matriz1: TMenuItem;
+    Filiais1: TMenuItem;
+    Entradas1: TMenuItem;
+    Sadas1: TMenuItem;
+    ConsultarMovimentaes1: TMenuItem;
+    Logout1: TMenuItem;
+    Movimentaes2: TMenuItem;
+    MembrosFuno1: TMenuItem;
+    Entradas2: TMenuItem;
+    Sadas2: TMenuItem;
+    MembrosFunes1: TMenuItem;
+    PainelDireita: TPanel;
+    PainelTopo: TPanel;
+    lblUsuario: TLabel;
+    lblFuncao: TLabel;
+    lblIgreja: TLabel;
+    btnPessoas: TSpeedButton;
+    btnEntradas: TSpeedButton;
+    btnSaidas: TSpeedButton;
+    btnMovimentacoes: TSpeedButton;
+    btnRelMov: TSpeedButton;
+    procedure Logout1Click(Sender: TObject);
+    procedure Usurios1Click(Sender: TObject);
+    procedure Matriz1Click(Sender: TObject);
+    procedure Filiais1Click(Sender: TObject);
+    procedure FunoEclesistica1Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure MembrosFuno1Click(Sender: TObject);
+    procedure Entradas1Click(Sender: TObject);
+    procedure ConsultarMovimentaes1Click(Sender: TObject);
+    procedure Sadas1Click(Sender: TObject);
+    procedure Entradas2Click(Sender: TObject);
+    procedure Movimentaes2Click(Sender: TObject);
+    procedure MembrosFunes1Click(Sender: TObject);
+    procedure btnPessoasClick(Sender: TObject);
+    procedure btnEntradasClick(Sender: TObject);
+    procedure btnSaidasClick(Sender: TObject);
+    procedure btnMovimentacoesClick(Sender: TObject);
+    procedure btnRelMovClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmPrincipal: TFrmPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses Login, Usuarios, Matriz, Filial, Funcoes, Modulo, Pessoas, Entradas,
+  Movimentacoes, Saidas, RelEntradas, RelMovimentacoes, RelPessoas;
+
+
+function ConverterRGB(r, g, b : Byte) : TColor;
+begin
+  Result := RGB(r, g, b);
+end;
+
+
+procedure TFrmPrincipal.btnEntradasClick(Sender: TObject);
+begin
+FrmEntradas := TFrmEntradas.Create(self);
+FrmEntradas.ShowModal;
+end;
+
+procedure TFrmPrincipal.btnMovimentacoesClick(Sender: TObject);
+begin
+FrmMovimentacoes := TFrmMovimentacoes.Create(self);
+FrmMovimentacoes.ShowModal;
+end;
+
+procedure TFrmPrincipal.btnPessoasClick(Sender: TObject);
+begin
+FrmMembros := TFrmMembros.Create(self);
+FrmMembros.ShowModal;
+end;
+
+procedure TFrmPrincipal.btnRelMovClick(Sender: TObject);
+begin
+FrmRelMov := TFrmRelMov.Create(self);
+FrmRelMov.ShowModal;
+end;
+
+procedure TFrmPrincipal.btnSaidasClick(Sender: TObject);
+begin
+FrmSaidas := TFrmSaidas.Create(self);
+FrmSaidas.ShowModal;
+end;
+
+procedure TFrmPrincipal.ConsultarMovimentaes1Click(Sender: TObject);
+begin
+FrmMovimentacoes := TFrmMovimentacoes.Create(self);
+FrmMovimentacoes.ShowModal;
+end;
+
+procedure TFrmPrincipal.Entradas1Click(Sender: TObject);
+begin
+FrmEntradas := TFrmEntradas.Create(self);
+FrmEntradas.ShowModal;
+end;
+
+procedure TFrmPrincipal.Entradas2Click(Sender: TObject);
+begin
+FrmRelEntradas := TFrmRelEntradas.Create(self);
+FrmRelEntradas.ShowModal;
+end;
+
+procedure TFrmPrincipal.Filiais1Click(Sender: TObject);
+begin
+FrmFilial := TFrmFilial.Create(self);
+FrmFilial.ShowModal;
+end;
+
+procedure TFrmPrincipal.FormShow(Sender: TObject);
+begin
+lblUsuario.Caption := nomePessoa;
+lblFuncao.Caption := funcaoPessoa;
+lblIgreja.Caption := nomeIgreja;
+
+
+if (funcaoPessoa = 'Administrador') or (funcaoPessoa = 'Pastor Presidente') then
+begin
+Usurios1.Enabled := true;
+end;
+
+
+
+end;
+
+procedure TFrmPrincipal.FunoEclesistica1Click(Sender: TObject);
+begin
+ FrmFuncoes := TFrmFuncoes.Create(self);
+FrmFuncoes.ShowModal;
+end;
+
+procedure TFrmPrincipal.Logout1Click(Sender: TObject);
+begin
+if FrmLogin = nil then
+begin
+FrmLogin := TFrmLogin.Create(self);
+FrmLogin.ShowModal;
+Close();
+end
+else
+begin
+FrmLogin.WindowState := wsNormal;
+FrmLogin.BringToFront;
+FrmLogin.Focused;
+Close();
+end;
+
+
+end;
+
+procedure TFrmPrincipal.Matriz1Click(Sender: TObject);
+begin
+FrmMatriz := TFrmMatriz.Create(self);
+FrmMatriz.ShowModal;
+end;
+
+procedure TFrmPrincipal.MembrosFunes1Click(Sender: TObject);
+begin
+FrmRelPessoas := TFrmRelPessoas.Create(self);
+FrmRelPessoas.ShowModal;
+end;
+
+procedure TFrmPrincipal.MembrosFuno1Click(Sender: TObject);
+begin
+FrmMembros := TFrmMembros.Create(self);
+FrmMembros.ShowModal;
+end;
+
+procedure TFrmPrincipal.Movimentaes2Click(Sender: TObject);
+begin
+FrmRelMov := TFrmRelMov.Create(self);
+FrmRelMov.ShowModal;
+end;
+
+procedure TFrmPrincipal.Sadas1Click(Sender: TObject);
+begin
+FrmSaidas := TFrmSaidas.Create(self);
+FrmSaidas.ShowModal;
+end;
+
+procedure TFrmPrincipal.Usurios1Click(Sender: TObject);
+begin
+FrmUsuarios := TFrmUsuarios.Create(self);
+FrmUsuarios.ShowModal;
+end;
+
+end.

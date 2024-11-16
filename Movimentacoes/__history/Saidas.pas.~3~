@@ -1,0 +1,97 @@
+unit Saidas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.StdCtrls, Vcl.ComCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.Buttons, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmSaidas = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    lblTotal: TLabel;
+    edtValor: TEdit;
+    grid: TDBGrid;
+    edtCodigo: TEdit;
+    data: TDateTimePicker;
+    lblIgreja: TLabel;
+    cbIgreja: TComboBox;
+    edtDescricao: TEdit;
+  private
+    { Private declarations }
+
+    procedure limparCampos();
+    procedure habilitarCampos();
+    procedure desabilitarCampos();
+
+    procedure buscarData();
+    procedure associarCampos();
+    procedure totalizar();
+    procedure formatarGrid();
+    procedure carregarCombobox();
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmSaidas: TFrmSaidas;
+
+implementation
+
+{$R *.dfm}
+
+{ TFrmSaidas }
+
+procedure TFrmSaidas.associarCampos;
+begin
+dm.tb_saidas.FieldByName('movimento').Value := cbMovimento.Text;
+dm.tb_saidas.FieldByName('valor').Value := edtValor.Text;
+dm.tb_saidas.FieldByName('igreja').Value := nomeIgreja;
+dm.tb_saidas.FieldByName('pessoa').Value := nomePessoa;
+dm.tb_saidas.FieldByName('data').Value := DateTostr(Date);
+end;
+
+procedure TFrmSaidas.buscarData;
+begin
+
+end;
+
+procedure TFrmSaidas.carregarCombobox;
+begin
+
+end;
+
+procedure TFrmSaidas.desabilitarCampos;
+begin
+
+end;
+
+procedure TFrmSaidas.formatarGrid;
+begin
+
+end;
+
+procedure TFrmSaidas.habilitarCampos;
+begin
+
+end;
+
+procedure TFrmSaidas.limparCampos;
+begin
+
+end;
+
+procedure TFrmSaidas.totalizar;
+begin
+
+end;
+
+end.

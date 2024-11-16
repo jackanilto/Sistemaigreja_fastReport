@@ -1,0 +1,32 @@
+program SistemaIgreja;
+
+uses
+  Vcl.Forms,
+  Login in 'Login.pas' {FrmLogin},
+  Principal in 'Principal.pas' {FrmPrincipal},
+  Usuarios in 'Cadastros\Usuarios.pas' {FrmUsuarios},
+  Matriz in 'Cadastros\Matriz.pas' {FrmMatriz},
+  Modulo in 'Modulo.pas' {dm: TDataModule},
+  Filial in 'Cadastros\Filial.pas' {FrmFilial},
+  Funcoes in 'Cadastros\Funcoes.pas' {FrmFuncoes},
+  Pessoas in 'Cadastros\Pessoas.pas' {FrmMembros},
+  Entradas in 'Movimentacoes\Entradas.pas' {FrmEntradas},
+  Movimentacoes in 'Movimentacoes\Movimentacoes.pas' {FrmMovimentacoes};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TFrmLogin, FrmLogin);
+  Application.CreateForm(TFrmPrincipal, FrmPrincipal);
+  Application.CreateForm(TFrmUsuarios, FrmUsuarios);
+  Application.CreateForm(TFrmMatriz, FrmMatriz);
+  Application.CreateForm(Tdm, dm);
+  Application.CreateForm(TFrmFilial, FrmFilial);
+  Application.CreateForm(TFrmFuncoes, FrmFuncoes);
+  Application.CreateForm(TFrmMembros, FrmMembros);
+  Application.CreateForm(TFrmEntradas, FrmEntradas);
+  Application.CreateForm(TFrmMovimentacoes, FrmMovimentacoes);
+  Application.Run;
+end.

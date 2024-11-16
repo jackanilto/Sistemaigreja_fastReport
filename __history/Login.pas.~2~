@@ -1,0 +1,29 @@
+unit Login;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.Imaging.jpeg,
+  Vcl.ExtCtrls, Vcl.StdCtrls;
+
+type
+  TFrmLogin = class(TForm)
+    Image1: TImage;
+    SpeedButton1: TSpeedButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmLogin: TFrmLogin;
+
+implementation
+
+{$R *.dfm}
+
+end.

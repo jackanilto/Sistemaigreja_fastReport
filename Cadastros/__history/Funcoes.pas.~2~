@@ -1,0 +1,34 @@
+unit Funcoes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
+  Vcl.Buttons, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls;
+
+type
+  TFrmFuncoes = class(TForm)
+    Label2: TLabel;
+    edtNome: TEdit;
+    grid: TDBGrid;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    edtCodigo: TEdit;
+    Image1: TImage;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmFuncoes: TFrmFuncoes;
+
+implementation
+
+{$R *.dfm}
+
+end.

@@ -1,0 +1,113 @@
+unit Movimentacoes;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Imaging.jpeg, Vcl.ExtCtrls,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.ComCtrls;
+
+type
+  TFrmMovimentacoes = class(TForm)
+    grid: TDBGrid;
+    Image1: TImage;
+    lblIgreja: TLabel;
+    cbIgreja: TComboBox;
+    Label1: TLabel;
+    dataInicial: TDateTimePicker;
+    Label2: TLabel;
+    dataFinal: TDateTimePicker;
+    procedure FormShow(Sender: TObject);
+    procedure cbIgrejaChange(Sender: TObject);
+    procedure dataInicialChange(Sender: TObject);
+    procedure dataFinalChange(Sender: TObject);
+  private
+    { Private declarations }
+    procedure buscarData();
+    procedure carregarCombobox();
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMovimentacoes: TFrmMovimentacoes;
+
+implementation
+
+{$R *.dfm}
+
+uses Modulo;
+
+{ TFrmMovimentacoes }
+
+procedure TFrmMovimentacoes.buscarData;
+begin
+dm.query_movimentacoes.Close;
+dm.query_movimentacoes.SQL.Clear;
+dm.query_movimentacoes.SQL.Add('select * from movimentacoes where data >= :dataInicial and data <= :dataFinal and igreja = :igreja order by data desc');
+dm.query_movimentacoes.ParamByName('dataInicial').Value :=  FormatDateTime('yyyy/mm/dd', dataInicial.Date);
+dm.query_movimentacoes.ParamByName('dataFinal').Value :=  FormatDateTime('yyyy/mm/dd', dataFinal.Date);
+dm.query_movimentacoes.ParamByName('igreja').Value :=  cbIgreja.Text;
+dm.query_movimentacoes.Open;
+
+
+end;
+
+procedure TFrmMovimentacoes.carregarCombobox;
+begin
+ if not dm.tb_filial.IsEmpty then
+  begin
+    while not dm.tb_filial.Eof do
+    begin
+       cbIgreja.Items.Add(dm.tb_filial.FieldByName('nome').AsString);
+       dm.tb_filial.next;
+    end;
+  end;
+end;
+
+procedure TFrmMovimentacoes.cbIgrejaChange(Sender: TObject);
+begin
+buscarData;
+end;
+
+procedure TFrmMovimentacoes.dataFinalChange(Sender: TObject);
+begin
+buscarData;
+end;
+
+procedure TFrmMovimentacoes.dataInicialChange(Sender: TObject);
+begin
+buscarData;
+end;
+
+procedure TFrmMovimentacoes.FormShow(Sender: TObject);
+begin
+
+if (funcaoPessoa = 'Pastor Presidente') or (funcaoPessoa = 'Administrador') then
+begin
+dm.tb_filial.Active := false;
+dm.tb_filial.Active := true;
+
+carregarCombobox();
+cbIgreja.Text := nomeIgreja;
+cbIgreja.Enabled := true;
+cbIgreja.Visible := true;
+lblIgreja.Visible := true;
+end
+else
+begin
+cbIgreja.Text := nomeIgreja;
+cbIgreja.Visible := false;
+lblIgreja.Visible := false;
+end;
+
+
+dataInicial.Date := Date;
+dataFinal.Date := Date;
+buscarData;
+
+end;
+
+
+
+end.

@@ -1,0 +1,31 @@
+unit RelPessoas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Buttons,
+  Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmRelPessoas = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    lblIgreja: TLabel;
+    btnRel: TSpeedButton;
+    cbIgreja: TComboBox;
+    cbFuncao: TComboBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmRelPessoas: TFrmRelPessoas;
+
+implementation
+
+{$R *.dfm}
+
+end.

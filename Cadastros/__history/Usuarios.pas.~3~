@@ -1,0 +1,45 @@
+unit Usuarios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Buttons, Vcl.Grids,
+  Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmUsuarios = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    edtBuscar: TEdit;
+    Label2: TLabel;
+    edtNome: TEdit;
+    edtUsuario: TEdit;
+    Label3: TLabel;
+    edtSenha: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    cbFuncao: TComboBox;
+    Label6: TLabel;
+    cbMatriz: TComboBox;
+    grid: TDBGrid;
+    btnNovo: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    cbFilial: TComboBox;
+    Label7: TLabel;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmUsuarios: TFrmUsuarios;
+
+implementation
+
+{$R *.dfm}
+
+end.

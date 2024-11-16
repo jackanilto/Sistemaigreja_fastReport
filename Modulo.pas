@@ -1,0 +1,156 @@
+unit Modulo;
+
+interface
+
+uses
+  System.SysUtils, System.Classes, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Comp.UI, Data.DB,
+  FireDAC.Comp.Client, FireDAC.Stan.Param, FireDAC.DatS, FireDAC.DApt.Intf,
+  FireDAC.DApt, FireDAC.Comp.DataSet, frxClass, frxDBSet;
+
+type
+  Tdm = class(TDataModule)
+    FDConnection1: TFDConnection;
+    driver: TFDPhysMySQLDriverLink;
+    FDGUIxWaitCursor1: TFDGUIxWaitCursor;
+    tb_matriz: TFDTable;
+    tb_matrizid: TFDAutoIncField;
+    tb_matriznome: TStringField;
+    tb_matrizendereco: TStringField;
+    tb_matriznumero: TStringField;
+    tb_matrizbairro: TStringField;
+    tb_matrizcidade: TStringField;
+    tb_matriztelefone: TStringField;
+    DSMatriz: TDataSource;
+    query_matriz: TFDQuery;
+    query_matrizid: TFDAutoIncField;
+    query_matriznome: TStringField;
+    query_matrizendereco: TStringField;
+    query_matriznumero: TStringField;
+    query_matrizbairro: TStringField;
+    query_matrizcidade: TStringField;
+    query_matriztelefone: TStringField;
+    tb_filial: TFDTable;
+    DSFilial: TDataSource;
+    query_filial: TFDQuery;
+    tb_filialid: TFDAutoIncField;
+    tb_filialnome: TStringField;
+    tb_filialendereco: TStringField;
+    tb_filialnumero: TStringField;
+    tb_filialbairro: TStringField;
+    tb_filialcidade: TStringField;
+    tb_filialtelefone: TStringField;
+    tb_filialmatriz: TStringField;
+    query_filialid: TFDAutoIncField;
+    query_filialnome: TStringField;
+    query_filialendereco: TStringField;
+    query_filialnumero: TStringField;
+    query_filialbairro: TStringField;
+    query_filialcidade: TStringField;
+    query_filialtelefone: TStringField;
+    query_filialmatriz: TStringField;
+    tb_funcoes: TFDTable;
+    query_funcoes: TFDQuery;
+    DSFuncoes: TDataSource;
+    query_funcoesid: TFDAutoIncField;
+    query_funcoesnome: TStringField;
+    tb_usuarios: TFDTable;
+    query_usuarios: TFDQuery;
+    DSUsuarios: TDataSource;
+    query_usuariosid: TFDAutoIncField;
+    query_usuariosnome: TStringField;
+    query_usuariosusuario: TStringField;
+    query_usuariossenha: TStringField;
+    query_usuariosfuncao: TStringField;
+    query_usuariosmatriz: TStringField;
+    query_usuariosfilial: TStringField;
+    tb_pessoas: TFDTable;
+    tb_usuariosid: TFDAutoIncField;
+    tb_usuariosnome: TStringField;
+    tb_usuariosusuario: TStringField;
+    tb_usuariossenha: TStringField;
+    tb_usuariosfuncao: TStringField;
+    tb_usuariosmatriz: TStringField;
+    tb_usuariosfilial: TStringField;
+    tb_pessoasid: TFDAutoIncField;
+    tb_pessoasnome: TStringField;
+    tb_pessoastelefone: TStringField;
+    tb_pessoasfuncao: TStringField;
+    tb_pessoasmatriz: TStringField;
+    tb_pessoasfilial: TStringField;
+    tb_pessoasimagem: TBlobField;
+    query_pessoas: TFDQuery;
+    DSPessoas: TDataSource;
+    query_pessoasid: TFDAutoIncField;
+    query_pessoasnome: TStringField;
+    query_pessoastelefone: TStringField;
+    query_pessoasmatriz: TStringField;
+    query_pessoasfilial: TStringField;
+    query_pessoasimagem: TBlobField;
+    query_pessoasfuncao: TStringField;
+    query_pessoasendereco: TStringField;
+    tb_pessoasendereco: TStringField;
+    tb_entradas: TFDTable;
+    query_entradas: TFDQuery;
+    DSEntradas: TDataSource;
+    tb_movimentacoes: TFDTable;
+    query_movimentacoes: TFDQuery;
+    DSMovimentacoes: TDataSource;
+    query_movimentacoesid: TFDAutoIncField;
+    query_movimentacoesmovimento: TStringField;
+    query_movimentacoesvalor: TBCDField;
+    query_movimentacoesdata: TDateField;
+    tb_movimentacoesid: TFDAutoIncField;
+    tb_movimentacoesmovimento: TStringField;
+    tb_movimentacoesvalor: TBCDField;
+    tb_movimentacoespessoa: TStringField;
+    tb_movimentacoesdata: TDateField;
+    query_movimentacoespessoa: TStringField;
+    tb_movimentacoestipo: TStringField;
+    query_movimentacoestipo: TStringField;
+    rel_carteirinha: TfrxReport;
+    rel_ds_pessoas: TfrxDBDataset;
+    rel_ds_matriz: TfrxDBDataset;
+    rel_ds_filial: TfrxDBDataset;
+    query_movimentacoesigreja: TStringField;
+    tb_saidas: TFDTable;
+    query_saidas: TFDQuery;
+    DSSaidas: TDataSource;
+    query_movimentacoesid_movimento: TIntegerField;
+    rel_entradas: TfrxReport;
+    rel_ds_entradas: TfrxDBDataset;
+    rel_ds_saidas: TfrxDBDataset;
+    rel_movimentacoes: TfrxReport;
+    rel_ds_mov: TfrxDBDataset;
+    rel_pessoas: TfrxReport;
+    procedure DataModuleCreate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  dm: Tdm;
+  nomePessoa: string;
+  nomeUsuario: string;
+  funcaoPessoa: string;
+  nomeIgreja: string;
+
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+procedure Tdm.DataModuleCreate(Sender: TObject);
+begin
+
+FDConnection1.Connected := true;
+
+end;
+
+end.

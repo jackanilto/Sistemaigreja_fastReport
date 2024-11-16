@@ -1,0 +1,84 @@
+unit Matriz;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Mask, Vcl.Buttons,
+  Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls, Vcl.Imaging.jpeg, Vcl.ExtCtrls;
+
+type
+  TFrmMatriz = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    edtBuscar: TEdit;
+    Label2: TLabel;
+    edtNome: TEdit;
+    edtEndereco: TEdit;
+    Label3: TLabel;
+    edtNumero: TEdit;
+    Label4: TLabel;
+    Label5: TLabel;
+    Label6: TLabel;
+    grid: TDBGrid;
+    btnBuscar: TSpeedButton;
+    btnSalvar: TSpeedButton;
+    btnEditar: TSpeedButton;
+    btnDeletar: TSpeedButton;
+    edtBairro: TEdit;
+    edtCidade: TEdit;
+    Label7: TLabel;
+    edtTel: TMaskEdit;
+  private
+    { Private declarations }
+    procedure limparCampos();
+    procedure habilitarCampos();
+    procedure desabilitarCampos();
+    procedure buscarTudo();
+    procedure buscarNome();
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmMatriz: TFrmMatriz;
+
+implementation
+
+{$R *.dfm}
+
+uses Modulo;
+
+{ TFrmMatriz }
+
+procedure TFrmMatriz.buscarNome;
+begin
+
+end;
+
+procedure TFrmMatriz.buscarTudo;
+begin
+
+end;
+
+procedure TFrmMatriz.desabilitarCampos;
+begin
+
+end;
+
+procedure TFrmMatriz.habilitarCampos;
+begin
+
+end;
+
+procedure TFrmMatriz.limparCampos;
+begin
+edtNome.Text = '';
+edtEndereco.Text = '';
+edtNumero.Text = '';
+edtBairro.Text = '';
+edtCidade.Text = '';
+edtTelefone.Text = '';
+end;
+
+end.
